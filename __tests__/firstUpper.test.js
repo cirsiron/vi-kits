@@ -16,4 +16,7 @@ describe('firstUpperCase()', () => {
   test('参数为 {}', () => {
     expect(firstUpperCase({})).toEqual({});
   })
+  test('参数为 {}', () => {
+    expect(firstUpperCase('_abc')).toEqual('_Abc');
+  })
 })

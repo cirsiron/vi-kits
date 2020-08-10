@@ -23,9 +23,5 @@ export const isEmptyObject = (obj) => {
   if (!obj) {
     return false;
   }
-  try {
-    return JSON.stringify(obj) === '{}';
-  } catch (e) {
-    return false;
-  }
+  return JSON.stringify(obj) === '{}';
 };

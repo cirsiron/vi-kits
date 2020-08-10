@@ -10,6 +10,9 @@ describe('msToDate()', () => {
   test('参数为1596697666460 应为 2020-08-06 15:07:46', () => {
     expect(msToDate(1596697666460)).toBe('2020-08-06 15:07:46')
   })
+  test('参数为1596697666460 应为 2020-08-06 15:07:46', () => {
+    expect(msToDate('2020-08-06 15:07:46')).toBe('2020-08-06 15:07:46')
+  })
 })
 
 describe('msToDateSimple()', () => {
@@ -22,6 +25,9 @@ describe('msToDateSimple()', () => {
   test('参数为1596697666460 应为 2020-08-06', () => {
     expect(msToDateSimple(1596697666460)).toBe('2020-08-06')
   })
+  test('参数为1596697666460 应为 2020-08-06', () => {
+    expect(msToDateSimple({})).toEqual({})
+  })
 })
 
 describe('formatDate()', () => {
@@ -30,6 +36,7 @@ describe('formatDate()', () => {
   })
   test('参数为1596697666460 应为 2020-08-06 15:07:46', () => {
     expect(formatDate(1596697666460, 'yyyy-MM-dd hh:mm:ss')).toBe('2020-08-06 15:07:46')
+    expect(formatDate(1596697666460, 'yyyy')).toBe('2020')
   })
   test('参数为2020-08-06 15:07:46 应为 2020-08-06 15:07:46', () => {
     expect(formatDate('2020-08-06 15:07:46', 'yyyy-MM-dd hh:mm:ss')).toBe('2020-08-06 15:07:46')
@@ -39,6 +46,12 @@ describe('formatDate()', () => {
   })
   test('参数为2020-08-06 15:07:46,yyyy/MM/dd hh:mm 应为 2020/08/06 15:07', () => {
     expect(formatDate('2020-08-06 15:07:46', 'yyyy/MM/dd hh:mm')).toBe('2020/08/06 15:07')
+  })
+  test('参数为2020-08-06 15:07:46,yyyy/MM/dd hh:mm 应为 2020/08/06 15:07', () => {
+    expect(formatDate('2020-08-06 15:07:46', 'yyyy/M/d h:m')).toBe('2020/8/6 15:7')
+  })
+  test('参数为2020-08-06 15:07:46,yyyy/MM/dd hh:mm 应为 2020/08/06 15:07', () => {
+    expect(formatDate('2020-08-06 15:07:46', 'yy/MM/dd hh:mm')).toBe('20/08/06 15:07')
   })
   test('参数为2020-08-06 15:07:46,yyyy/MM/dd hh:mm 应为 2020/08/06 15:07', () => {
     expect(formatDate(1596697666460, 'yyyy/MM/dd hh:mm')).toBe('2020/08/06 15:07')

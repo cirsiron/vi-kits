@@ -18,6 +18,11 @@ describe('trim()', () => {
   test('参数 “ 1233  ”', () => {
     expect(trim(' 1233 ..._s ', '.')).toBe(' 1233 _s ')
   })
+
+  test('参数 “{}”', () => {
+    expect(trim({})).toEqual({})
+  })
+
   test('参数 “ 1233  ”', () => {
     expect(trim(' 1233 ..._s ', 's')).toBe(' 1233 ..._ ')
   })

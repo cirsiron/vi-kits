@@ -3,11 +3,10 @@ import { padLeftZero } from './padLeftZero';
 /**
  * 带时分秒的时间 eg： 2020-09-09 00:20:00
  * time: 秒数
- * nil: 空值时,显示的值. 默认为 '-'
  */
-export const msToDate = (time, nil) => {
+export const msToDate = (time) => {
 	if(!time) {
-		return nil || '-';
+		return '-';
 	}
 	if(typeof time === 'string'){
 		return time;
@@ -17,15 +16,12 @@ export const msToDate = (time, nil) => {
 }
 
 // 简单的时间 eg: 2020-09-09
-export const msToDateSimple = (time, nil) => {
-  const dateString = msToDate(time, nil)
-	if(typeof dateString === 'string' && dateString === nil){
-		return dateString;
-  }
+export const msToDateSimple = (time) => {
   try {
+    const dateString = msToDate(time);
     return dateString.split(' ')[0];
   } catch (e) {
-    return dateString;
+    return time;
   }
 }
 
@@ -35,9 +31,10 @@ export function formatDate (date, fmt) {
   if (!date || +newDate !== +newDate) {
     return '-';
   }
-  fmt = fmt || 'yyyy-MM-dd hh:mm:ss'
-  if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, (newDate.getFullYear() + '').substr(4 - RegExp.$1.length))
+  fmt = fmt || 'yyyy-MM-dd hh:mm:ss';
+  if (/(y+)/g.test(fmt)) {
+    const fullYear = newDate.getFullYear() + ''
+    fmt = fmt.replace(RegExp.$1, fullYear.substr(4 - RegExp.$1.length))
   }
   let o = {
     'M+': newDate.getMonth() + 1,
@@ -48,8 +45,9 @@ export function formatDate (date, fmt) {
   }
   for (let k in o) {
     if (new RegExp(`(${k})`).test(fmt)) {
-      let str = o[k] + ''
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str))
+      let str = o[k] + '';
+      const repStr = RegExp.$1.length === 1 ? str : padLeftZero(str);
+      fmt = fmt.replace(RegExp.$1, repStr);
     }
   }
   return fmt

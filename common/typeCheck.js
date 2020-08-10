@@ -4,7 +4,7 @@
  */
 export const checkType = (val, type) => {
   if(val === null || val === undefined) {
-    return val === type;
+    return String(val) === String(type);
   }
   if (!type) {
     return false;

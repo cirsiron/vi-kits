@@ -1,14 +1,20 @@
 {
-  "name": "vi-utils",
-  "version": "1.0.0",
+  "name": "vi-kits",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "rollup -c",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "publish": "npm publish"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "工具库",
+    "tool"
+  ],
+  "author": "huanghui",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -18,7 +24,8 @@
     "regenerator-runtime": "^0.13.7",
     "rollup": "^2.23.0",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "vuepress": "^1.5.3"
   },
   "dependencies": {
     "js-cookie": "^2.2.1"
