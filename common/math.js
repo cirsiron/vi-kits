@@ -76,12 +76,18 @@ export class MathCalc {
     this.val = +val === +val ? val : null;
   }
   _checkNum () {
+    if (isNil(this.val)) {
+      return false;
+    }
     const isNum = checkType(this.val, 'number');
     return isNum;
   }
   // 加
   add (arg2) {
     if (!this._checkNum()) {
+      return this;
+    }
+    if (arg2 === 0) {
       return this;
     }
     const arg1 = this.val;
@@ -99,11 +105,13 @@ export class MathCalc {
     if (!this._checkNum()) {
       return this;
     }
+    if (arg2 === 0) {
+      return this;
+    }
     const arg1 = this.val;
     const r1 = getFloatLen(arg1);
     const r2 = getFloatLen(arg2);
     const n = Math.max(r1, r2);
-    const m = Math.pow(10, n);
     const v1 = displacement(arg1, n);
     const v2 = displacement(arg2, n);
     const value = displacement(v1 - v2, -n);
@@ -116,7 +124,10 @@ export class MathCalc {
       return this;
     }
     const arg1 = this.val;
-    if (arg2 === null || arg1 === 0 || arg2 === 0) return this;
+    if (arg2 === null || arg1 === 0 || arg2 === 0) {
+      this.val = 0;
+      return this;
+    };
     const r1 = getFloatLen(arg1);
     const r2 = getFloatLen(arg2);
     const s1 = Number(arg1.toString().replace('.', ''));

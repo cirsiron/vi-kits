@@ -49,12 +49,15 @@ describe('math()', () => {
     expect($math(45.6).mul(13).val).toBe(592.8);
     // 86.24000000000001
     expect($math(12.32).mul(7).val).toBe(86.24);
+
+    expect($math(12.32).mul(0).val).toBe(0);
   })
   test('$math add', () => {
     expect($math(0.1).add(0.2).val).toBe(0.3);
     expect($math(0.7).add(0.1).val).toBe(0.8);
     expect($math(26.08).add(22).val).toBe(48.08);
     expect($math('').add(0.2).val).toBe('');
+    expect($math(1).add(0).val).toBe(1);
   })
 
   test('$math div', () => {
@@ -78,5 +81,6 @@ describe('math()', () => {
     expect($math(3).sub(1).val).toBe(2);
     expect($math(-3).sub(1).val).toBe(-4);
     expect($math(-3).sub(-1).val).toBe(-2);
+    expect($math(1).sub(0).val).toBe(1);
   })
 })
