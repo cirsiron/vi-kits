@@ -1,4 +1,4 @@
-import { isNil, isEmptyObject, isEmptyStr, isNull, isUndef } from '../common/isNil';
+import { isNil, isEmptyObject, isEmptyStr, isNull, isUndef } from '../common/nil';
 
 describe('isNil()', () => {
   test('参数为空', () => {

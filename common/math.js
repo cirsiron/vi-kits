@@ -1,5 +1,5 @@
-import { checkType } from './typeCheck';
-import { isNil } from '../common/isNil';
+import { checkType } from './check';
+import { isNil } from './nil';
 
 /**
  * 移位函数
@@ -74,6 +74,9 @@ export const getFloatLen = (n) => {
 export class MathCalc {
   constructor(val) {
     this.val = +val === +val ? val : null;
+  }
+  getVal () {
+    return this.val;
   }
   _checkNum () {
     if (isNil(this.val)) {

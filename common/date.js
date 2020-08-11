@@ -1,4 +1,4 @@
-import { padLeftZero } from './padLeftZero';
+import { padLeftZero } from './number';
 
 /**
  * 带时分秒的时间 eg： 2020-09-09 00:20:00
